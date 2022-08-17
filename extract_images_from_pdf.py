@@ -2,8 +2,8 @@ import fitz
 from PIL import Image
 
 MIN_WIDTH = 600
-MAX_WIDTH = 610
-MIN_HEIGHT = 800
+MAX_WIDTH = 810
+MIN_HEIGHT = 600
 MAX_HEIGHT = 810
 
 
