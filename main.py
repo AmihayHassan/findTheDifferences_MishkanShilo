@@ -163,8 +163,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# TODO:
-# 1. add checkbox to select if the images should be saved
-# 2. add a frame to show the images
-# 3. allow the user to select the min/max size of the images
