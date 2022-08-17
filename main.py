@@ -99,7 +99,6 @@ class FTD:
 
     def pick_color(self):
         color = colorchooser.askcolor()
-        print(color)
         self.color_value_rgb = color[0]
         self.color_pick_frame.config(background=color[1])
 
