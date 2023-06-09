@@ -39,9 +39,13 @@ def mark_clusters(diff_image, img1, img2, color, clusters=10):
     # Find the biggest contours
     contours = sorted(contours, key=cv2.contourArea, reverse=True)[:clusters]
 
-    # Draw contours on the images
-    cv2.drawContours(img1, contours, -1, color, 2)
-    cv2.drawContours(img2, contours, -1, color, 2)
+    # Draw circles around the biggest contours
+    for contour in contours:
+        (x, y), radius = cv2.minEnclosingCircle(contour)
+        center = (int(x), int(y))
+        radius = int(radius)
+        cv2.circle(img1, center, radius, color, 2)
+        cv2.circle(img2, center, radius, color, 2)
 
     img1 = cv2.copyMakeBorder(img1, 5, 5, 2, 2, cv2.BORDER_CONSTANT, value=(0, 0, 0))
     img2 = cv2.copyMakeBorder(img2, 5, 5, 2, 2, cv2.BORDER_CONSTANT, value=(0, 0, 0))
@@ -78,6 +82,7 @@ def find_the_differences(img1, img2, color=(0, 0, 0), resize=0.5, save=False):
     # save the image
     if save:
         cv2.imwrite("diff.png", diff)
+        cv2.imwrite("concatenated.png", concatenated)
     # wait for a key press
     cv2.waitKey(0)
     # close the window
